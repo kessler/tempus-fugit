@@ -1,0 +1,21 @@
+{
+  "name": "tempus-fugit",
+  "version": "0.0.1",
+  "description": "schedule stuff",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/kessler/tempus-fugit"
+  },
+  "keywords": [
+    "schedule"
+  ],
+  "author": "Yaniv Kessler",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kessler/tempus-fugit/issues"
+  }
+}
