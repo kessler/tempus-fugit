@@ -14,10 +14,15 @@ Usage
 ### Rounding api
 
 temporalRounding.closestSecond(date);
+
 temporalRounding.closestMinute(date);
+
 temporalRounding.closestHour(date);
+
 temporalRounding.closestDate(date);
+
 temporalRounding.closestMonth(date);
+
 temporalRounding.closestYear(date);
 
 ##### example
