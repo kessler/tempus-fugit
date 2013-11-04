@@ -11,6 +11,8 @@ Install
 
 Usage
 -----
+### Scheduling api
+
 ### Rounding api
 
 temporalRounding.closestSecond(date);
@@ -41,8 +43,6 @@ will print:
 
 > Wed Dec 25 2013 23:23:59 GMT+0200 (Jerusalem Standard Time)
 > Wed Dec 25 2013 23:24:00 GMT+0200 (Jerusalem Standard Time)
-
-### Scheduling api
 
 TODO
 ----
