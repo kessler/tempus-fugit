@@ -3,6 +3,8 @@ Tempus Fugit
 
 > Tempus fugit is a Latin expression meaning "time flees", more commonly translated as "time flies". It is frequently used as an inscription on clocks.
 
+This module contains high level api for scheduling jobs and also exposes utilities and classes to help build other more custom / complex scheduling code.
+
 Install
 -------
 ```
@@ -12,6 +14,8 @@ Install
 Usage
 -----
 ### Scheduling api
+
+The scheduling api can be used to schedule single time or repeating jobs. Repeating jobs revolve around the interval object (see below).
 
 ##### schedule a one time job in the future:
 ```
@@ -31,7 +35,7 @@ job.cancel();
 var scheduling = require('tempus-fugit').scheduling;
 
 var interval = { hour: 1, minute: 5 }; // every hour and 5 minutes
-var task = function () {};
+var task = function (job) { job.done(); // this.done() also works };
 
 var job = scheduling.schedule(interval, task);
 
@@ -39,6 +43,45 @@ var job = scheduling.schedule(interval, task);
 job.cancel();
 ```
 
+##### the interval object:
+```
+var interval = {
+	millisecond: 1,
+	second: 2,
+	hour: 3,
+	day: 4,
+	start: Date.now() || new Date() //optional
+}
+```
+_note: the start property is optional, without this property the job will be schedule to the next interval event, calculated since unix epoch time_
+
+##### underlying scheduling classes
+```
+	var AbstractJob = require('tempus-fugit').scheduling.AbstractJob;
+	var $u = require('util');
+
+	$u.inherits(MyJob, AbstractJob);
+	function MyJob(task, options) {
+		AbstractJob.call(this, task, options)
+	}
+
+	// must implement
+	MyJob.prototype._executeImpl = function () {
+		return setInterval(this._task, 500);
+	};
+
+	// must implement
+	MyJob.prototype._cancelImpl = function(token) {
+		return clearInterval(token);
+	};
+
+	// optionally implement, if so, do no pass task argument in constructor
+	MyJob.prototype._task = function () {
+		console.log('foo!');
+	};
+
+```
+- - -
 ### Interval util
 
 ##### tu.intervalObjectToMillis():
