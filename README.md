@@ -55,7 +55,7 @@ var interval = {
 ```
 _note: the start property is optional, without this property the job will be schedule to the next interval event, calculated since unix epoch time_
 
-##### underlying scheduling classes
+##### create new job "classes"
 ```
 	var AbstractJob = require('tempus-fugit').scheduling.AbstractJob;
 	var $u = require('util');
