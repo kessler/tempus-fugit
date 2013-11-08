@@ -20,7 +20,7 @@ describe('SeriallyRepeatingJob', function () {
 			}
 		}
 
-		var job = new SeriallyRepeatingJob(task, { delay: 200, interval: 100, unref: true });
+		var job = new SeriallyRepeatingJob(task, { delay: 200, interval: 200, unref: true });
 
 		job.execute();
 
@@ -32,10 +32,10 @@ describe('SeriallyRepeatingJob', function () {
 				setTimeout(function () {
 						assert.strictEqual(taskCalled, 3);
 					done();
-				}, 105);
-			}, 600);
+				}, 205);
+			}, 750);
 
-		}, 210);
+		}, 250);
 	});
 
 	it('will not continue if task implementation doesnt call done', function (done) {

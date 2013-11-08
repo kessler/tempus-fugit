@@ -7,11 +7,11 @@ describe('RepeatingJob', function (done) {
 		var taskCalled = 0;
 
 		function task() {
-			console.log(taskCalled++);
+			taskCalled++;
 			assert.strictEqual(job, this);
 		}
 
-		var job = new RepeatingJob(task, { delay: 10, interval: 100, unref: true });
+		var job = new RepeatingJob(task, { delay: 100, interval: 100, unref: true });
 
 		job.execute();
 
@@ -20,8 +20,8 @@ describe('RepeatingJob', function (done) {
 
 			setTimeout(function () {
 				assert.strictEqual(taskCalled, 3);
-			}, 200);
-		}, 30);
+			}, 300);
+		}, 110);
 	});
 
 	it('can be cancelled', function (done) {
