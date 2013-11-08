@@ -65,7 +65,7 @@ will print:
 
 > { millisecond: 502, second: 3 }
 
-note: this will modify the original interval object
+_note: this will modify the original interval object_
 
 ##### tu.intervalCountSinceEpoch:
 ```
@@ -86,7 +86,7 @@ will print:
 
 which is 30 years * 365 day + 7(.5) days from leap years
 
-_the n argument is optional, if omitted the function will use Date.now() internally_
+_note: the n argument is optional, if omitted the function will use Date.now() internally_
 
 ##### tu.nextIntervalEvent:
 ```
@@ -107,7 +107,7 @@ will print:
 
 > Sun, 02 Jan 2000 00:00:00 GMT
 
-_the n argument is optional, if omitted the function will use Date.now() internally_
+_note: the n argument is optional, if omitted the function will use Date.now() internally_
 
 
 ### Date related util
