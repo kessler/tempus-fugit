@@ -13,7 +13,7 @@ Usage
 -----
 ### Scheduling api
 
-##### schedule a one time job in the future example:
+##### schedule a one time job in the future:
 ```
 var scheduling = require('tempus-fugit').scheduling;
 
@@ -26,7 +26,7 @@ var job = scheduling.schedule(futureDate, task);
 job.cancel();
 ```
 
-##### schedule a repeating / recurring job example:
+##### schedule a repeating / recurring job:
 ```
 var scheduling = require('tempus-fugit').scheduling;
 
@@ -41,7 +41,7 @@ job.cancel();
 
 ### Interval util
 
-##### tu.intervalObjectToMillis() example:
+##### tu.intervalObjectToMillis():
 ```
 var tu = require('tempus-fugit').tu;
 
@@ -53,7 +53,7 @@ will print:
 
 > 2500
 
-##### tu.normalizeIntervalObject example:
+##### tu.normalizeIntervalObject:
 ```
 var tu = require('tempus-fugit').tu;
 
@@ -67,7 +67,7 @@ will print:
 
 note: this will modify the original interval object
 
-##### tu.intervalCountSinceEpoch example:
+##### tu.intervalCountSinceEpoch:
 ```
 var tu = require('tempus-fugit').tu;
 
@@ -85,6 +85,29 @@ will print:
 > 10957
 
 which is 30 years * 365 day + 7(.5) days from leap years
+
+_the n argument is optional, if omitted the function will use Date.now() internally_
+
+##### tu.nextIntervalEvent:
+```
+var tu = require('tempus-fugit').tu;
+
+var interval = { day: 1 };
+
+var n = Date.UTC(2000, 0, 1, 0, 30); // Sat Jan 01 2000 00:30:00 GMT
+
+var millis = tu.intervalObjectToMillis(interval);
+
+var nextInterval = tu.nextIntervalEvent(millis, n);
+
+console.log(new Date(nextInterval).toUTCString());
+
+```
+will print:
+
+> Sun, 02 Jan 2000 00:00:00 GMT
+
+_the n argument is optional, if omitted the function will use Date.now() internally_
 
 
 ### Date related util
@@ -116,6 +139,7 @@ tu.nextYear(date);
 will print:
 
 > Wed Dec 25 2013 23:23:59 GMT+0200 (Jerusalem Standard Time)
+
 > Wed Dec 25 2013 23:24:00 GMT+0200 (Jerusalem Standard Time)
 
 TODO
