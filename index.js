@@ -1,2 +1,2 @@
-module.exports.temporalRounding = module.exports.tr = require('./lib/temporalRounding.js');
+module.exports.temporalUtil = module.exports.tu = require('./lib/temporalUtil.js');
 
