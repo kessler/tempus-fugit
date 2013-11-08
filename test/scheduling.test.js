@@ -31,16 +31,14 @@ describe('scheduling', function () {
 
 	describe('schedules a repeating job', function () {
 
-		var taskFired = 0;
-
-		function task(job) {
-			taskFired++;
-			job.done();
-		}
-
-		var now = new Date();
-
 		it('starts in the next interval event', function () {
+
+			var taskFired = 0;
+
+			function task(job) {
+				taskFired++;
+				job.done();
+			}
 
 			var sampleDate = new Date(2013, 11, 25, 0, 30);
 
@@ -58,6 +56,14 @@ describe('scheduling', function () {
 		});
 
 		it('starts whenever we tell it to start', function () {
+
+			var taskFired = 0;
+
+			function task(job) {
+				taskFired++;
+				job.done();
+			}
+
 			var sampleNow = new Date(2013, 11, 25, 0, 10);
 			var sampleDate = new Date(2013, 11, 25, 0, 30);
 
@@ -74,7 +80,36 @@ describe('scheduling', function () {
 
 			assert.strictEqual(job._options.interval, Constants.HOUR * 2);
 		});
-	});
 
+		it('executes on time (second resolution)', function (done) {
+
+			this.timeout(7500);
+
+			var now = Date.now();
+
+			var taskFired = 0;
+			var fireTime = 0;
+			function task(job) {
+				fireTime = Date.now();
+				taskFired++;
+				job.done();
+			}
+
+			var interval = {
+				second: 5,
+				start: now + 1000
+			};
+
+			var job = scheduling.schedule(interval, task);
+
+			setTimeout(function () {
+				assert.strictEqual(taskFired, 2);
+				assert.strictEqual(Math.round(fireTime / 1000), Math.round( (now + 6000) / 1000));
+				done();
+			}, 7000);
+
+
+		});
+	});
 
 });
