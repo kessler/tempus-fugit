@@ -86,7 +86,7 @@ _note: the start property is optional, without this property the job will be sch
 
 ##### tu.intervalObjectToMillis():
 ```
-var tu = require('tempus-fugit').tu;
+var tu = require('tempus-fugit').temporalUtil;
 
 var interval = { millisecond: 500, second: 2 };
 
