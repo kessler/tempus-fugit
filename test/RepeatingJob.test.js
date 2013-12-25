@@ -19,7 +19,7 @@ describe('RepeatingJob', function (done) {
 			assert.strictEqual(taskCalled, 1);
 
 			setTimeout(function () {
-				assert.strictEqual(taskCalled, 3);
+				assert.strictEqual(taskCalled, 4);
 			}, 3300);
 		}, 1100);
 	});
