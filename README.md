@@ -35,6 +35,8 @@ job.cancel();
 var scheduling = require('tempus-fugit').scheduling;
 
 var interval = { hour: 1, minute: 5 }; // every hour and 5 minutes
+
+// job.done() is not required when overlappingExecutions is true
 var task = function (job) { job.done(); // this.done() also works };
 
 var job = scheduling.schedule(interval, task);
@@ -42,14 +44,23 @@ var job = scheduling.schedule(interval, task);
 // can cancel
 job.cancel();
 ```
+##### scheduling options:
+
+unref: \[boolean\] (default false) setting this to true will issue automatic unref() on timers, which will allow the node process to exit when a task is run.
+
+overlappingExecutions: \[boolean\] (default false) setting this to true will cause tasks to overlap if
+they dont finish before interval time elapses.
+
+createOnly: \[boolean\] (default false) if set to true execute() will not be called, this means you will have to call job.execute() after shceduling.schedule(...)
 
 ##### the interval object:
 ```
 var interval = {
 	millisecond: 1,
 	second: 2,
-	hour: 3,
-	day: 4,
+	minute: 3,
+	hour: 4,
+	day: 5,
 	start: Date.now() || new Date() //optional
 }
 ```
