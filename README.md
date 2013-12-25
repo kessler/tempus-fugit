@@ -38,7 +38,7 @@ var interval = { hour: 1, minute: 5 }; // every hour and 5 minutes
 // job.done() is not required when overlappingExecutions is true
 var task = function (job) { job.done(); // this.done() also works };
 
-var job = scheduling.schedule(interval, task);
+var job = scheduling.schedule(interval, task /*, {.. options ..} */);
 
 // can cancel
 job.cancel();
