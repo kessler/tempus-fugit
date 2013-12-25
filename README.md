@@ -1,5 +1,4 @@
-Tempus Fugit
-============
+# Tempus Fugit [![Build Status](https://secure.travis-ci.org/kessler/tempus-fugit.png?branch=master)](http://travis-ci.org/kessler/tempus-fugit)
 
 > Tempus fugit is a Latin expression meaning "time flees", more commonly translated as "time flies". It is frequently used as an inscription on clocks.
 

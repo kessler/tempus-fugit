@@ -11,11 +11,15 @@
     "url": "https://github.com/kessler/tempus-fugit"
   },
   "keywords": [
-    "schedule", "scheduling"
+    "schedule",
+    "scheduling"
   ],
   "author": "Yaniv Kessler",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/kessler/tempus-fugit/issues"
+  },
+  "devDependencies": {
+    "mocha": "~1.16.2"
   }
 }
