@@ -27,6 +27,8 @@ var job = scheduling.schedule(futureDate, task);
 
 // can cancel
 job.cancel();
+
+job = scheduling.schedule(1000, task); // schedule in 1 second from now
 ```
 
 ##### schedule a repeating / recurring job:
