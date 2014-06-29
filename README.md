@@ -18,29 +18,29 @@ The scheduling api can be used to schedule single time or repeating jobs. Repeat
 
 ##### schedule a one time job in the future:
 ```
-var scheduling = require('tempus-fugit').scheduling;
+var schedule = require('tempus-fugit').schedule;
 
 var futureDate = new Date(....);
 var task = function () {};
 
-var job = scheduling.schedule(futureDate, task);
+var job = schedule(futureDate, task);
 
 // can cancel
 job.cancel();
 
-job = scheduling.schedule(1000, task); // schedule in 1 second from now
+job = schedule(1000, task); // schedule in 1 second from now
 ```
 
 ##### schedule a repeating / recurring job:
 ```
-var scheduling = require('tempus-fugit').scheduling;
+var schedule = require('tempus-fugit').schedule;
 
 var interval = { hour: 1, minute: 5 }; // every hour and 5 minutes
 
 // job.done() is not required when overlappingExecutions is true
 var task = function (job) { job.done(); // this.done() also works };
 
-var job = scheduling.schedule(interval, task /*, {.. options ..} */);
+var job = schedule(interval, task /*, {.. options ..} */);
 
 // can cancel
 job.cancel();
@@ -69,7 +69,7 @@ _note: the start property is optional, without this property the job will be sch
 
 ##### Creating new job "classes"
 ```
-	var AbstractJob = require('tempus-fugit').scheduling.AbstractJob;
+	var AbstractJob = require('tempus-fugit').AbstractJob;
 	var $u = require('util');
 
 	$u.inherits(MyJob, AbstractJob);
@@ -199,6 +199,8 @@ will print:
 
 TODO
 ----
-support month and year intervals, calculated correctly
+- support month and year intervals, calculated correctly
+- throw exception from jobs if error event is not handled or ignore errors flag is not set
+- add more events to job
 
 

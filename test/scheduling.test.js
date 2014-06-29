@@ -1,4 +1,4 @@
-var scheduling = require('../lib/scheduling.js');
+var schedule = require('../lib/scheduling.js');
 var assert = require('assert');
 var Constants = require('../lib/temporalUtil.js').millisConstants;
 
@@ -16,7 +16,7 @@ describe('scheduling', function () {
 			taskFired++;
 		}
 
-		var job = scheduling.schedule(jobTime, task);
+		var job = schedule(jobTime, task);
 
 		setTimeout(function () {
 			assert.strictEqual(taskFired, 1);
@@ -48,7 +48,7 @@ describe('scheduling', function () {
 				now: sampleDate.getTime()
 			};
 
-			var job = scheduling.schedule(interval, task, { createOnly: true });
+			var job = schedule(interval, task, { createOnly: true });
 
 			assert.strictEqual(job._options.delay, Constants.HOUR + (Constants.MINUTE * 30));
 
@@ -74,7 +74,7 @@ describe('scheduling', function () {
 				start: sampleDate
 			};
 
-			var job = scheduling.schedule(interval, task, { createOnly: true });
+			var job = schedule(interval, task, { createOnly: true });
 
 			assert.strictEqual(job._options.delay, Constants.MINUTE * 20);
 
@@ -100,7 +100,7 @@ describe('scheduling', function () {
 				start: now + 1000
 			};
 
-			var job = scheduling.schedule(interval, task);
+			var job = schedule(interval, task);
 
 			setTimeout(function () {
 				assert.strictEqual(taskFired, 2);
