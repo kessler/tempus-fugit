@@ -38,7 +38,11 @@ var schedule = require('tempus-fugit').schedule;
 var interval = { hour: 1, minute: 5 }; // every hour and 5 minutes
 
 // job.done() is not required when overlappingExecutions is true
-var task = function (job) { job.done(); // this.done() also works };
+var task = function (job) { 
+	// this.done() also works
+	// also job.callback() can be used to create a callback function instead, e.g fs.readFile('foo', job.callback())
+	job.done(); 
+};
 
 var job = schedule(interval, task /*, {.. options ..} */);
 
