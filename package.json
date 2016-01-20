@@ -1,7 +1,7 @@
 {
   "name": "tempus-fugit",
   "version": "2.2.2",
-  "description": "schedule stuff",
+  "description": "A scheduling and time utilities module that doesn't waste your time",
   "main": "index.js",
   "scripts": {
     "test": "mocha"
