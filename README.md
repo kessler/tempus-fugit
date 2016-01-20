@@ -17,7 +17,7 @@ Usage
 The scheduling api can be used to schedule single time or repeating jobs. Repeating jobs revolve around the interval object (see below).
 
 ##### schedule a one time job in the future:
-```
+```js
 var schedule = require('tempus-fugit').schedule;
 
 var futureDate = new Date(....);
@@ -32,7 +32,7 @@ job = schedule(1000, task); // schedule in 1 second from now
 ```
 
 ##### schedule a repeating / recurring job:
-```
+```js
 var schedule = require('tempus-fugit').schedule;
 
 var interval = { hour: 1, minute: 5 }; // every hour and 5 minutes
@@ -59,7 +59,7 @@ they dont finish before interval time elapses.
 createOnly: \[boolean\] (default false) if set to true execute() will not be called, this means you will have to call job.execute() after shceduling.schedule(...)
 
 ##### the interval object:
-```
+```js
 var interval = {
 	millisecond: 1,
 	second: 2,
@@ -72,7 +72,7 @@ var interval = {
 _note: the start property is optional, without this property the job will be schedule to the next interval event, calculated since unix epoch time_
 
 ##### Creating new job "classes"
-```
+```js
 	var AbstractJob = require('tempus-fugit').AbstractJob;
 	var $u = require('util');
 
@@ -101,7 +101,7 @@ _note: the start property is optional, without this property the job will be sch
 ### Interval util
 
 ##### tu.intervalObjectToMillis():
-```
+```js
 var tu = require('tempus-fugit').temporalUtil;
 
 var interval = { millisecond: 500, second: 2 };
@@ -113,7 +113,7 @@ will print:
 > 2500
 
 ##### tu.normalizeIntervalObject:
-```
+```js
 var tu = require('tempus-fugit').tu;
 
 var interval = { millisecond: 1502, second: 2 };
@@ -127,7 +127,7 @@ will print:
 _note: this will modify the original interval object_
 
 ##### tu.intervalCountSinceEpoch:
-```
+```js
 var tu = require('tempus-fugit').tu;
 
 var interval = { day: 1 };
@@ -148,7 +148,7 @@ which is 30 years * 365 day + 7(.5) days from leap years
 _note: the n argument is optional, if omitted the function will use Date.now() internally_
 
 ##### tu.nextIntervalEvent:
-```
+```js
 var tu = require('tempus-fugit').tu;
 
 var interval = { day: 1 };
@@ -184,7 +184,7 @@ tu.nextMonth(date);
 tu.nextYear(date);
 
 ##### example
-```
+```js
 	var tf = require('tempus-fugit');
 
 	var now = new Date(2013, 11, 25, 23, 23, 59, 123);
