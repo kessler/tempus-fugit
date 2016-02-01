@@ -21,7 +21,7 @@ The scheduling api can be used to schedule single time or repeating jobs. Repeat
 var schedule = require('tempus-fugit').schedule;
 
 var futureDate = new Date(....);
-var task = function () {};
+function task() {}
 
 var job = schedule(futureDate, task);
 
@@ -38,11 +38,11 @@ var schedule = require('tempus-fugit').schedule;
 var interval = { hour: 1, minute: 5 }; // every hour and 5 minutes
 
 // job.done() is not required when overlappingExecutions is true
-var task = function (job) { 
+function task(job) { 
 	// this.done() also works
 	// also job.callback() can be used to create a callback function instead, e.g fs.readFile('foo', job.callback())
 	job.done(); 
-};
+}
 
 var job = schedule(interval, task /*, {.. options ..} */);
 
