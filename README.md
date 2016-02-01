@@ -66,7 +66,7 @@ var interval = {
 	minute: 3,
 	hour: 4,
 	day: 5,
-	start: Date.now() || new Date() //optional
+	start: Date.now() + 10000 || new Date('some date in the future') //optional
 }
 ```
 _note: the start property is optional, without this property the job will be schedule to the next interval event, calculated since unix epoch time_
