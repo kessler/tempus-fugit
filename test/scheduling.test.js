@@ -109,7 +109,7 @@ describe('scheduling', function () {
 			}, 7000);
 		});
 
-		it.only('execute the job immediately and repeat by interval from the first execution', function (done) {
+		it('execute the job immediately and repeat by interval from the first execution', function (done) {
 			this.timeout(7500);
 
 			var now = Date.now();
@@ -132,7 +132,7 @@ describe('scheduling', function () {
 				assert.strictEqual(Math.round(fireTime / 1000), Math.round( (now + 5000) / 1000));
 				done();
 			}, 7000);
-		})
+		});
 	});
 
 });
