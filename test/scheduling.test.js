@@ -107,9 +107,32 @@ describe('scheduling', function () {
 				assert.strictEqual(Math.round(fireTime / 1000), Math.round( (now + 6000) / 1000));
 				done();
 			}, 7000);
-
-
 		});
+
+		it.only('execute the job immediately and repeat by interval from the first execution', function (done) {
+			this.timeout(7500);
+
+			var now = Date.now();
+
+			var fireTime = 0;
+
+			function task(job) {
+				fireTime = Date.now();
+				job.done();
+			}
+
+			var interval = {
+				second: 5,
+				start: Date.now()
+			};
+
+			var job = schedule(interval, task);
+
+			setTimeout(function () {
+				assert.strictEqual(Math.round(fireTime / 1000), Math.round( (now + 5000) / 1000));
+				done();
+			}, 7000);
+		})
 	});
 
 });

@@ -14,7 +14,7 @@ Usage
 -----
 ### Scheduling api
 
-The scheduling api can be used to schedule single time or repeating jobs. Repeating jobs revolve around the interval object (see below).
+The scheduling api can be used to schedule single time or repeating jobs. Repeating jobs schedule is defined using the interval object (see below).
 
 ##### schedule a one time job in the future:
 ```js
@@ -69,7 +69,19 @@ var interval = {
 	start: Date.now() + 10000 || new Date('some date in the future') //optional
 }
 ```
-_note: the start property is optional, without this property the job will be schedule to the next interval event, calculated since unix epoch time_
+The interval object supports all the time units displayed above, those can also be used in combination to create more complex intervals (e.g day + hour + second). When scheduling a task using an interval object, tempus-fugit will sync the execution cycle to the next round occurance of the interval. 
+
+For example, look at the following code:
+```js
+schedule({ hour: 1 }, function task (job) { job.done() })
+```
+If initially run at 20:31, will execute task at 21:00, then 22:00, then 23:00 etc...
+
+If we want to start the cycle right away we can use the optional **start** property:
+```js
+schedule({ hour: 1, start: Date.now() }, function task (job) { job.done() })
+```
+If initially run at 20:31, will execute task at 20:31, then 21:31, 22:31 etc...
 
 ##### Creating new job "classes"
 ```js
@@ -201,7 +213,14 @@ will print:
 
 > Wed Dec 25 2013 23:24:00 GMT+0200 (Jerusalem Standard Time)
 
-TODO
+### A Pitfall
+I should probably find a solution for this, but for now, if you run a SeriallyRepeatingJob like this one:
+```js
+schedule({ /*some interval data*/ }, function (job) {})
+```
+Calling job.done() will created a timer. But in this case we don't, if there are no other pending tasks in the event loop the process will exit. 
+
+### TODO
 ----
 - support month and year intervals, calculated correctly
 - throw exception from jobs if error event is not handled or ignore errors flag is not set
