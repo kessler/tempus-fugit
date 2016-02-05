@@ -1,5 +1,7 @@
 # Tempus Fugit [![Build Status](https://secure.travis-ci.org/kessler/tempus-fugit.png?branch=master)](http://travis-ci.org/kessler/tempus-fugit)
 
+[![Join the chat at https://gitter.im/kessler/tempus-fugit](https://badges.gitter.im/kessler/tempus-fugit.svg)](https://gitter.im/kessler/tempus-fugit?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 > Tempus fugit is a Latin expression meaning "time flees", more commonly translated as "time flies". It is frequently used as an inscription on clocks.
 
 This module contains high level api for scheduling jobs and also exposes utilities and classes to help build other more custom / complex scheduling code.
